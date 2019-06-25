@@ -13,7 +13,8 @@ class Split extends React.Component {
 
     splitBill = e => {
         e.preventDefault();
-        this.setState({ total: this.state.num2 / this.state.num1 })
+        this.setState({ total: parseFloat(Math.round((this.state.num2 / this.state.num1) * 100) / 100).toFixed(2) })
+        
 };
 
     handleChange = e => {

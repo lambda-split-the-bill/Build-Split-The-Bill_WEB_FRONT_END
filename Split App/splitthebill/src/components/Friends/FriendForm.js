@@ -1,6 +1,13 @@
 import React from 'react'
 
 class FriendForm extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            friend: ''
+    }
+}
+    
     render() {
         return(
             <div className='friendform'>
