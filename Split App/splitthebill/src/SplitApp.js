@@ -9,15 +9,15 @@ import { Route } from 'react-router-dom';
 function SplitApp() {
     return (
         <div className="App">
-        <Route exact path='/'
+        <Route exact path='/home'
         render={props => <Logout {...props} />}
         />
 
-        <Route exact path='/'
+        <Route exact path='/home'
         render={props => <Home {...props} />}
         />      
 
-        <Route exact path='/'
+        <Route exact path='/home'
         render={props => <Friends {...props} />}
         />
 

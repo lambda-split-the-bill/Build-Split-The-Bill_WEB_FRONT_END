@@ -19,15 +19,11 @@ class Login extends Component {
 handleLoginSubmit = e => {
     e.preventDefault()
     axios
-    .put('https://lambda-split-the-bill-be.herokuapp.com/api/register')
-            .then((res) => {
-                if (!axios.get(res.username) && !axios.get(res.password)) {
-                    this.setState({ loggedin: false });
-                } else {
-                    this.setState({ loggedin: true });
-                }
+        .put('https://lambda-split-the-bill-be.herokuapp.com/api/register', this.state.username, this.state.password, this.state.email)
+        .then((res) => {
+            
+            
             })
-    window.location.reload();
 };
 
     render() {

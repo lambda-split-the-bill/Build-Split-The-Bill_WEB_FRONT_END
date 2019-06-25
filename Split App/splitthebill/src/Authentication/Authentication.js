@@ -1,7 +1,7 @@
 import React from "react";
 import axios from 'axios';
 
-const withAuthenticate = SplitApp => Login =>
+const withAuthenticate = SplitApp => 
     class extends React.Component {
         constructor(props) {
             super(props);
@@ -27,7 +27,7 @@ const withAuthenticate = SplitApp => Login =>
         }
         render() {
             if (this.state.loggedin) return <SplitApp />;
-            return <Login />;
+            return <SplitApp />;
         }
     };
 
