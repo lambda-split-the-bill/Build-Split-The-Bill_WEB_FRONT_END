@@ -5,16 +5,34 @@ import Login from './components/Login/Login';
 import Signup from './components/Login/Signup';
 import Logout from './components/Login/Logout';
 import Split from './components/Calculator/Split';
+import { Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      <Friends />
-      <Login />
-      <Signup />
-      <Logout />
-      <Split />
+      <Route exact path='/'
+      render={props => <Logout {...props} />}
+      />
+      
+      <Route exact path='/'
+      render={props => <Home {...props} />}
+      />      
+      
+      <Route exact path='/'
+      render={props => <Friends {...props} />}
+      />
+      
+      <Route exact path='/login'
+      render={props => <Login {...props} />}
+      />
+      
+      <Route exact path='/signup'
+      render={props => <Signup {...props} />}
+      />
+
+      <Route exact path='/split'
+      render={props => <Split {...props} />}
+      />
     </div>
   );
 }
