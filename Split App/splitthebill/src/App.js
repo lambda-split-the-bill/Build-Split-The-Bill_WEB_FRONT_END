@@ -2,7 +2,7 @@ import React from 'react';
 
 import Login from './components/Login/Login';
 import SplitApp from './SplitApp';
-import withAuthenicator from "./Authentication/Authentication";
+import withAuthenicator from "./authentication/Authentication";
 
 class App extends React.Component {
   constructor() {
@@ -19,6 +19,6 @@ class App extends React.Component {
   }
 }
 
-const ComponentFromWithAuthenticate = withAuthenicator(Login)(SplitApp);
+const ComponentFromWithAuthenticate = withAuthenicator(SplitApp);
 
 export default App;

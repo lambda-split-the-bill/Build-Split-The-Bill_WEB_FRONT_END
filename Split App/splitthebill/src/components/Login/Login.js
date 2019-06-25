@@ -31,7 +31,7 @@ class Login extends Component {
 
     render() {
         return (
-        <form className="login" onClick={this.handleLoginSubmit}> 
+        <form className="login" onSubmit={this.handleLoginSubmit}> 
             <h1>Split The Bill!</h1>
             <h3>Log In</h3>
             <input
