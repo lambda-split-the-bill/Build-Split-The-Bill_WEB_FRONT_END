@@ -1,6 +1,13 @@
 import React from 'react'
 
 class FriendForm extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            friend: ''
+    }
+}
+    
     render() {
         return(
             <div className='friendform'>
@@ -8,7 +15,7 @@ class FriendForm extends React.Component {
                     <input
                     placeholder='Add A Friend'
                     type='text' />
-                    <i class="far fa-plus-square fa-2x"></i>
+                    <button><i className="fas fa-user-plus"></i></button>
                 </form>
             </div>
         )
