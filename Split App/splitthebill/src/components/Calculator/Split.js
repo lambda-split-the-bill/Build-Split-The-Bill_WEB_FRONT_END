@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 class Split extends React.Component {
     constructor() {
@@ -25,13 +26,14 @@ class Split extends React.Component {
         this.setState({ [e.target.name]: e.target.value })
 };
 
-    
     render(){
         console.log('num1 =', this.state.num1, 'num2 = ',this.state.num2)
         return(
             <div className='calculator'>
                 
                 <form onSubmit={this.splitBill}>
+                    <h2>Add A Bill</h2>
+
                     <h2>Where did you eat?</h2>
                     <input
                     type='text'
@@ -41,6 +43,7 @@ class Split extends React.Component {
                     
                     <h2>How many friends tagged along?</h2>
                     <input
+                    step='any'
                     placeholder='0'
                     name='num1'
                     type='number'
@@ -61,6 +64,11 @@ class Split extends React.Component {
                 
                 <h2>Everyone should pay...</h2>
                 <h2>{this.state.total}</h2>
+                <button>
+                    <NavLink to='/'>
+                        Add
+                    </NavLink>
+                </button>
             </div>
         )
     }

@@ -1,6 +1,7 @@
 import React from "react";
+import axios from 'axios';
 
-const withAuthenticate = App => Login =>
+const withAuthenticate = SplitApp => Login =>
     class extends React.Component {
         constructor(props) {
             super(props);
@@ -11,14 +12,21 @@ const withAuthenticate = App => Login =>
             };
         }
         componentDidMount() {
-            if (!localStorage.getItem("username") && !localStorage.getItem("password")) {
-                this.setState({ loggedin: false });
-            } else {
-                this.setState({ loggedin: true });
-            }
+            axios
+                .get('')
+                .then((res) => {
+                    if (!axios.get(res.username) && !axios.get(res.password)) {
+                        this.setState({ loggedin: false });
+                    } else {
+                        this.setState({ loggedin: true });
+                    }
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
         }
         render() {
-            if (this.state.loggedin) return <App />;
+            if (this.state.loggedin) return <SplitApp />;
             return <Login />;
         }
     };

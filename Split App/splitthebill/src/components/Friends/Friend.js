@@ -1,13 +1,11 @@
 import React from 'react';
 
-class Friend extends React.Component {
-    render() {
+const Friend = props => {
         return(
             <div className='friend'>
-                <h2>Mike G.</h2>
+                <h2>{props.friend.name}</h2>
             </div>
-        )
-    }
+    )
 }
 
 export default Friend;

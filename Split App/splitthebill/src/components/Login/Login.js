@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 class Login extends Component {
     constructor(props) {
@@ -14,9 +15,17 @@ class Login extends Component {
         this.setState({ [e.target.name]: e.target.value });
 };
 
-    handleLoginSubmit = () => {
-        const user = this.state.username;
-        localStorage.setItem('user', user);
+    handleLoginSubmit = e => {
+        e.preventDefault()
+        axios
+        .get('')
+                .then((res) => {
+                    if (!axios.get(res.username) && !axios.get(res.password)) {
+                        this.setState({ loggedin: false });
+                    } else {
+                        this.setState({ loggedin: true });
+                    }
+                })
         window.location.reload();
 };
 
@@ -42,6 +51,7 @@ class Login extends Component {
             <button type='submit'>
             Login
             </button>
+            
             <h3>Need an Account?</h3>
             <button >
             <NavLink to='/signup'>

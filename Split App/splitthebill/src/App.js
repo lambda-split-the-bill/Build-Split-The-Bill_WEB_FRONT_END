@@ -1,40 +1,24 @@
 import React from 'react';
-import Home from './components/Home/Home';
-import Friends from './components/Friends/Friends';
-import Login from './components/Login/Login';
-import Signup from './components/Login/Signup';
-import Logout from './components/Login/Logout';
-import Split from './components/Calculator/Split';
-import { Route } from 'react-router-dom';
 
-function App() {
+import Login from './components/Login/Login';
+import SplitApp from './SplitApp';
+import withAuthenicator from "./Authentication/Authentication";
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+  
+  render() {
   return (
     <div className="App">
-      <Route exact path='/'
-      render={props => <Logout {...props} />}
-      />
-      
-      <Route exact path='/'
-      render={props => <Home {...props} />}
-      />      
-      
-      <Route exact path='/'
-      render={props => <Friends {...props} />}
-      />
-      
-      <Route exact path='/login'
-      render={props => <Login {...props} />}
-      />
-      
-      <Route exact path='/signup'
-      render={props => <Signup {...props} />}
-      />
-
-      <Route exact path='/split'
-      render={props => <Split {...props} />}
-      />
+      <ComponentFromWithAuthenticate />
     </div>
   );
+  }
 }
+
+const ComponentFromWithAuthenticate = withAuthenicator(Login)(SplitApp);
 
 export default App;
