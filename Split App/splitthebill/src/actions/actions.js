@@ -1,5 +1,9 @@
 import axios from './node_modules/axios';
 
+const registerPath = 'https://lambda-split-the-bill-be.herokuapp.com/api/auth/register';
+
+const logPath = `https://lambda-split-the-bill-be.herokuapp.com/api/auth/login`;
+
 export const CREATE_USER = 'CREATE_USER';
 export const SUCCESS_CREATE = 'SUCCESS_CREATE';
 export const FAILED_CREATE = 'FAILED_CREATE';
@@ -25,7 +29,7 @@ export function signUp() {
     return dispatch => {
         dispatch({ type: CREATE_USER });
             axios  
-                .post('https://lambda-split-the-bill-be.herokuapp.com/api/auth/register', user)
+                .post(registerPath, creds)
                 .then((res) => {
                     dispatch({ type: SUCCESS_CREATE, payload: res.data })
                 })
@@ -37,8 +41,10 @@ export function logIn() {
     return dispatch => {
         dispatch({ type: FETCH_USER })
             axios
-                .get(`https://lambda-split-the-bill-be.herokuapp.com/api/auth/login`)
+                .post(logPath, creds)
                 .then((res) => {
+                    localStorage.setItem("token", res.data.token);
+                    localStorage.setItem("userId", res.data.id)
                     dispatch({ type: SUCCESS_USER, payload: res.data })
             })
                 .catch(err => dispatch({ type: FAILED_USER, payload: err }))

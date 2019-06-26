@@ -48,6 +48,7 @@ export const splitReducer = (state = initialState, action) => {
             }
         case FAILED_CREATE:
             return{
+                ...state,
                 error: 'User not created',
                 creatingUser: false
             }
@@ -68,6 +69,7 @@ export const splitReducer = (state = initialState, action) => {
             }
         case FAILED_USER:
             return{
+                ...state,
                 error: 'User not found',
                 fetchingUser: false
             }
@@ -88,6 +90,7 @@ export const splitReducer = (state = initialState, action) => {
             }
         case FAILED_FRIEND:
             return{
+                ...state,
                 error: 'Friend not added',
                 addingFriend: false
             }
@@ -114,14 +117,18 @@ export const splitReducer = (state = initialState, action) => {
             }
         case FAILED_BILL:
             return{
+                ...state,
                 error: 'Bill not added',
                 addingBill: false
             }
-        case DELETE_FRIEND:
+        case DELETE_BILL:
             return{
                 ...state,
                 error: '',
                 addingBill: false
             }
+        
+        default:
+            return state;
     }
 }
