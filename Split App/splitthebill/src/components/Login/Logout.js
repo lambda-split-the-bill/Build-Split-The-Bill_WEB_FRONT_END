@@ -4,7 +4,7 @@ class Logout extends React.Component {
     
     logout() {
         localStorage.clear();
-        window.location.href = '/';
+        window.location.href = '/login';
     }
     
     render() {

@@ -26,9 +26,10 @@ class Home extends React.Component {
 }
     
     render() {
+        console.log(this.props)
     return (
         <div className='Home'>
-            <h1>Welcome {this.props.username}</h1>
+            <h1>Welcome {}</h1>
 
             <button variant="primary" onClick={this.handleShow}>
                 Add A Bill!

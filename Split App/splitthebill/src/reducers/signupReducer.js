@@ -2,7 +2,8 @@ import { CREATE_USER, SUCCESS_CREATE, FAILED_CREATE} from '../actions';
 
 const initialState = {
     creatingUser: false,
-    error: null
+    error: null,
+    loggedIn: false
 }
 
 export const signupReducer = (state = initialState, action) => {
@@ -18,6 +19,7 @@ export const signupReducer = (state = initialState, action) => {
                 ...state,
                 error: '',
                 creatingUser: false,
+                loggedIn: true,
                 data: action.payload
             }
         case FAILED_CREATE:
