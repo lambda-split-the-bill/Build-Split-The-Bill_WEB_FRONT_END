@@ -22,7 +22,11 @@ class Signup extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
+        if(this.state.credentials.username.length > 0 && this.state.credentials.password.length > 0) {
         this.props.signUp(this.state.credentials);
+        } else {
+            alert('An input was left blank')
+        }
 };
 
     render() {

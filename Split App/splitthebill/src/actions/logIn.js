@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const logPath = `https://lambda-split-the-bill-be.herokuapp.com/api/auth/login`;
+const path = `https://lambda-split-the-bill-be.herokuapp.com/api/auth/login`;
 
 export const FETCH_USER = 'FETCH_USER';
 export const SUCCESS_USER = 'SUCCESS_USER';
@@ -10,7 +10,7 @@ export function logIn(creds) {
     return dispatch => {
         dispatch({ type: FETCH_USER })
             axios
-                .post(logPath, creds)
+                .post(path, creds)
                 .then((res) => {
                     localStorage.setItem("token", res.data.token);
                     localStorage.setItem("userId", res.data.id)
