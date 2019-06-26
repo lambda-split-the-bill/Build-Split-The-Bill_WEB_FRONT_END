@@ -3,11 +3,16 @@ html {
     color: white;
 }
 .modal {
-    background-color: white;
-    border: 2px black solid;
+    margin-top: 4%;
+    outline: none;
+    background-color: #ffc038;
+    border-radius: 10px;
+    color: black;
+    border: 2px white solid;
     position: fixed;
     width: 40%;
     top: 30%;
-    left: 50%;
+    left: 55%;
     transform: translate(-50%, -50%);
+    padding: 10px;
 }

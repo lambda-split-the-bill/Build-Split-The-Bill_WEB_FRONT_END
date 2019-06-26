@@ -1,8 +1,8 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { Route } from 'react-router-dom';
-import Split from '../Calculator/Split';
 
+import Split from '../Calculator/Split';
 import '../../App.css'
 
 class Home extends React.Component {
@@ -17,6 +17,7 @@ class Home extends React.Component {
         };
     }
     
+
     handleClose() {
         this.setState({ show: false });
 }
@@ -29,13 +30,13 @@ class Home extends React.Component {
         console.log(this.props)
     return (
         <div className='Home'>
-            <h1>Welcome {}</h1>
+            <h1>Welcome to Split The Bill!</h1>
 
             <button variant="primary" onClick={this.handleShow}>
                 Add A Bill!
             </button>
         
-        <Modal 
+        <Modal
             className='modal'
             show={this.state.show} 
             onHide={this.handleClose}
