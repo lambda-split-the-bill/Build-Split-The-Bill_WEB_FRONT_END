@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { signUp } from '../../actions/signUp';
+import { NavLink } from 'react-router-dom'
 
 
 class Signup extends React.Component {
@@ -24,30 +25,47 @@ class Signup extends React.Component {
         e.preventDefault();
         if(this.state.credentials.username.length > 0 && this.state.credentials.password.length > 0) {
         this.props.signUp(this.state.credentials);
+        setTimeout(() => this.signupChecker(), 1000) 
         } else {
             alert('An input was left blank')
         }
+        
 };
+
+    signupChecker = () => {
+        if(this.props.loggedIn){
+            this.props.history.push('/home')
+        } else {
+            alert('SignUp Failed')
+        }
+}
+
 
     render() {
         console.log(this.state);
         return (
         <div className="Signup">
             <form onSubmit={this.handleSubmit}>
-            Username:{" "}
             <input
+            placeholder='Username'
             name="username"
             onChange={this.handleChange}
             value={this.state.credentials.username}
             />
-            Password:{" "}
             <input
+            placeholder='Password'
             name="password"
             type='password'
             onChange={this.handleChange}
             value={this.state.credentials.password}
             />{" "}
-        <button>Signup</button>
+        <button type='submit'>Signup</button>
+
+        <h2>Have an Account?</h2>
+                <button>
+                    <NavLink to="/login">Login</NavLink>
+                </button>
+
         </form>
     </div>
     );
@@ -57,7 +75,7 @@ class Signup extends React.Component {
 const mapStateToProps = state => {
     console.log(state);
     return {
-        creatingUser: state.signup.creatingUser  
+        loggedIn: state.signup.loggedIn 
 };
 };
 

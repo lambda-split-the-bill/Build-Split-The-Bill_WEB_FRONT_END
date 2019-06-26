@@ -13,6 +13,7 @@ export const signUp = creds => {
                 .post(path, creds)
                 .then(res => {
                     console.log(res);
+                    localStorage.setItem("token", res.data.token);
                     dispatch({ type: SUCCESS_CREATE });
                 })
                 .catch(err => {
