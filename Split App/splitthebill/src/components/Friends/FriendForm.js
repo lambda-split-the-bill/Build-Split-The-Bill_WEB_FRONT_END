@@ -1,35 +1,35 @@
 import React from 'react'
 import { Route } from 'react-router-dom';
-
-import Friend from './Friend'
+import { connect } from 'react-redux'
+import { addFriend } from '../../actions/friend';
+import Friend from './Friend';
 
 class FriendForm extends React.Component {
-    constructor() {
-        super();
-        this.state = {
+        state = {
             friend: {
                 name: '',
                 email: ''
             }
     }
-}
-
-    addFriend = e => {
-        e.preventDefault();
-        this.setState({ 
-            friend: {
-                name: this.state.name, 
-                email: this.state.email
-    }})}
 
     handleChange = e => {
-        this.setState({ [e.target.name]: e.target.value })
+        this.setState({
+        ...this.state,
+        [e.target.name]: e.target.value 
+    })
 };
+
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props
+        .addFriend(this.state)
+        .then(res => this.props.history.push('/'));
+    };
     
     render() {
         return(
             <div className='friendform'>
-                <form onSubmit={this.addFriend}>
+                <form onSubmit={this.handleSubmit}>
                     <input
                     placeholder='Add A Friend'
                     type='text'
@@ -44,13 +44,15 @@ class FriendForm extends React.Component {
                     onChange={this.handleChange} />
                     <button type='submit'><i className="fas fa-user-plus"></i></button>
                 </form>
-                
                 <Route exact path='/'
-                render={props => <Friend {...props} friend={this.state.friend} />}
+                render={props => <Friend {...props} friend={this.friend} />}
         />
             </div>
         )
     }
 }
 
-export default FriendForm; 
+export default connect(
+    null,
+    { addFriend}
+)(FriendForm);

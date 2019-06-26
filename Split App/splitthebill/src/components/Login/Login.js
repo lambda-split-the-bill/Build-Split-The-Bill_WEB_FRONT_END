@@ -1,66 +1,85 @@
-import React, { Component } from 'react';
+import React from "react";
+import { connect } from "react-redux";
+import { logIn } from '../../actions/logIn';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
 
-class Login extends Component {
-    constructor(props) {
-    super(props);
-    this.state = {
-        username: "",
-        password: ""
-    };
-}
+import Loader from "react-loader-spinner";
 
-    handleInputChange = e => {
-        this.setState({ [e.target.name]: e.target.value });
+
+class Login extends React.Component {
+    state = {
+        credentials: {
+            username: "",
+            password: ""
+    }
 };
 
-    handleLoginSubmit = e => {
-        e.preventDefault()
-        axios
-        .get('')
-                .then((res) => {
-                    if (!axios.get(res.username) && !axios.get(res.password)) {
-                        this.setState({ loggedin: false });
-                    } else {
-                        this.setState({ loggedin: true });
-                    }
-                })
-        window.location.reload();
+    handleChange = e => {
+        this.setState({
+            credentials: {
+            ...this.state.credentials,
+            [e.target.name]: e.target.value
+    }
+    });
+};
+
+    login = e => {
+        e.preventDefault();
+            this.props.logIn(this.state.credentials);
 };
 
     render() {
         return (
-        <form className="login" onSubmit={this.handleLoginSubmit}> 
-            <h1>Split The Bill!</h1>
-            <h3>Log In</h3>
+            <div className="login">
+            <form onSubmit={this.logIn}>
             <input
             type="text"
-            placeholder="User Name"
             name="username"
-            value={this.state.username}
-            onChange={this.handleInputChange}
-            />
+            placeholder="Username"
+            value={this.state.credentials.username}
+            onChange={this.handleChange}
+        />
+
             <input
             type="password"
-            placeholder="Password"
             name="password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-            />
-            <button type='submit'>
-            Login
-            </button>
-            
-            <h3>Need an Account?</h3>
-            <button >
-            <NavLink to='/signup'>
-                Sign Up
-            </NavLink>
-            </button>
+            placeholder="Password"
+            value={this.state.credentials.password}
+            onChange={this.handleChange}
+        />
+
+            <div className="flex-spacer" />
+            {this.props.error && <p className="error">{this.props.error}</p>}
+
+        <button>
+            {this.props.loggingIn ? (
+            <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
+            ) : (
+            "Login"
+            )}
+        </button>
+
+        <NavLink to="/signup">
+                <button color="white" className="is-rounded">
+                    <span>Sign Up</span>
+                </button>
+        </NavLink>
+
+
+
         </form>
+        
+    </div>
     );
 }
 }
 
-export default Login;
+const mapStateToProps = ({ error, loggingIn }) => ({
+    error,
+    loggingIn
+});
+
+export default connect(
+    mapStateToProps,
+    { logIn }
+)(Login);
