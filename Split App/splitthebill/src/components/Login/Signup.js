@@ -34,7 +34,7 @@ class Signup extends React.Component {
 
     signupChecker = () => {
         if(this.props.loggedIn){
-            this.props.history.push('/home')
+            this.props.history.push('/')
         } else {
             alert('SignUp Failed')
         }

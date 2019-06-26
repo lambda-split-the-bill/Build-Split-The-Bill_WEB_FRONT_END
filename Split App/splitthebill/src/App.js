@@ -18,9 +18,9 @@ function App() {
         render={props => <Signup {...props} />}
         />
 
-        <PrivateRoute exact path='/home' component={Logout} />
-        <PrivateRoute exact path='/home' component={Home} />
-        <PrivateRoute exact path='/home' component={Friends} />
+        <PrivateRoute exact path='/' component={Logout} />
+        <PrivateRoute exact path='/' component={Home} />
+        <PrivateRoute exact path='/' component={Friends} />
     </div>
 );
 }
