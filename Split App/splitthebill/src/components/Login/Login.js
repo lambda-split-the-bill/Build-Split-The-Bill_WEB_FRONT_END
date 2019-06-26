@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { logIn } from '../../actions/actions';
+import { logIn } from '../../actions/logIn';
 import { NavLink } from 'react-router-dom';
 
 import Loader from "react-loader-spinner";
@@ -35,7 +35,7 @@ class Login extends React.Component {
             <input
             type="text"
             name="username"
-            placeholder="User name"
+            placeholder="Username"
             value={this.state.credentials.username}
             onChange={this.handleChange}
         />
@@ -43,7 +43,7 @@ class Login extends React.Component {
             <input
             type="password"
             name="password"
-            placeholder=".........."
+            placeholder="Password"
             value={this.state.credentials.password}
             onChange={this.handleChange}
         />
@@ -59,9 +59,9 @@ class Login extends React.Component {
             )}
         </button>
 
-        <NavLink to="/register">
+        <NavLink to="/signup">
                 <button color="white" className="is-rounded">
-                    <span>Register</span>
+                    <span>Sign Up</span>
                 </button>
         </NavLink>
 

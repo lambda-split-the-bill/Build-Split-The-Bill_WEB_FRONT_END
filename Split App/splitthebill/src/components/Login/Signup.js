@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { signUp } from '../../actions/actions';
+import { signUp } from '../../actions/signUp';
 
 
 class Signup extends React.Component {
@@ -22,7 +22,7 @@ class Signup extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.signup(this.state.credentials);
+        this.props.signUp(this.state.credentials);
 };
 
     render() {
@@ -39,6 +39,7 @@ class Signup extends React.Component {
             Password:{" "}
             <input
             name="password"
+            type='password'
             onChange={this.handleChange}
             value={this.state.credentials.password}
             />{" "}
@@ -51,8 +52,8 @@ class Signup extends React.Component {
 
 const mapStateToProps = state => {
     console.log(state);
-        return {
-        creatingUser: state.register.creatingUser
+    return {
+        creatingUser: state.signup.creatingUser  
 };
 };
 

@@ -25,7 +25,6 @@ class Home extends React.Component {
         this.setState({ show: true });
 }
     
-    
     render() {
     return (
         <div className='Home'>
