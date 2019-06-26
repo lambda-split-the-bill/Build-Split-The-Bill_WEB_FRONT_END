@@ -2,6 +2,68 @@ import React from "react";
 import { connect } from "react-redux";
 import { logIn } from '../../actions/logIn';
 import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+
+const LoginDiv = styled.div`
+    color: white;
+    margin-top: 10%;
+    border: 2px white solid;
+    height: 350px;
+    width: 500px;
+    border-radius: 10px;
+    margin-left: 36%;
+    background-color: #ffc038;
+    text-align: center;
+`
+
+const LoginForm = styled.form`
+    display: flex;
+    flex-direction: column;
+`
+
+const LoginInputUser = styled.input`
+    margin-top: 15%;
+    font-size: 28px;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #ffc038;
+    border-style: none;
+    border-bottom: 2px black solid;
+`
+
+const LoginInputPass = styled.input`
+    margin-top: 12px;
+    margin-left: 10%;
+    font-size: 28px;
+    margin-right: 10%;
+    background-color: #ffc038;
+    border-style: none;
+    border-bottom: 2px black solid;   
+`
+
+const LoginButton = styled.button`
+    margin-top: 24px;
+    width: 350px;
+    margin-left: 15%;
+    background-color: #2c3338;
+    color: white;
+    border-style: none;
+    border-radius: 4px;
+`
+
+const SignupButton = styled.button`
+    width: 350px;
+    background-color: #2c3338;
+    color: white;
+    border-style: none;
+    border-radius: 4px;
+    text-decoration: none;
+`
+
+const SignupDiv = styled.div`
+    width: 100%;
+    margin-top: 26px;
+`
 
 class Login extends React.Component {
     state = {
@@ -32,7 +94,7 @@ class Login extends React.Component {
 
     loginChecker = () => {
         if(this.props.isLoggedIn){
-            this.props.history.push('/home')
+            this.props.history.push('/')
         } else {
             alert('Login Failed')
         }
@@ -41,9 +103,10 @@ class Login extends React.Component {
     render() {
         console.log(this.state);
         return (
-            <div className="login">
-            <form onSubmit={this.login}>
-            <input
+            <LoginDiv>
+            <img src='../../logo.png' alt='logo' />    
+            <LoginForm onSubmit={this.login}>
+            <LoginInputUser
             type="text"
             name="username"
             placeholder="Username"
@@ -51,7 +114,7 @@ class Login extends React.Component {
             onChange={this.handleChange}
         />
 
-            <input
+            <LoginInputPass
             type="password"
             name="password"
             placeholder="Password"
@@ -62,18 +125,20 @@ class Login extends React.Component {
             <div />
             {this.props.error && <p className="error">{this.props.error}</p>}
 
-        <button type='submit'>
+        <LoginButton type='submit'>
             Login
-        </button>
+        </LoginButton>
 
+                <SignupDiv>
                 <h2>Need an Account?</h2>
-                <button>
+                <SignupButton>
                     <NavLink to="/signup">Sign Up</NavLink>
-                </button>
+                </SignupButton>
+                </SignupDiv>
         
-        </form>
+        </LoginForm>
         
-    </div>
+    </LoginDiv>
     );
 }
 }
