@@ -22,7 +22,7 @@ const LoginForm = styled.form`
 `
 
 const LoginInputUser = styled.input`
-    margin-top: 15%;
+
     font-size: 28px;
     margin-left: 10%;
     margin-right: 10%;
@@ -65,6 +65,10 @@ const SignupDiv = styled.div`
     margin-top: 26px;
 `
 
+const LoginLogo = styled.img`
+    height: 100px;
+`
+
 class Login extends React.Component {
     state = {
         credentials: {
@@ -86,10 +90,11 @@ class Login extends React.Component {
         e.preventDefault();
         if(this.state.credentials.username.length > 0 && this.state.credentials.password.length > 0) {
         this.props.logIn(this.state.credentials);
+        setTimeout(() => this.loginChecker(), 1000) 
         } else {
             alert('An input was left blank')
         }
-        setTimeout(() => this.loginChecker(), 1000) 
+        
 };
 
     loginChecker = () => {
@@ -104,7 +109,7 @@ class Login extends React.Component {
         console.log(this.state);
         return (
             <LoginDiv>
-            <img src='../../logo.png' alt='logo' />    
+            <LoginLogo src='../../logo.png' alt='logo' />   
             <LoginForm onSubmit={this.login}>
             <LoginInputUser
             type="text"

@@ -1,0 +1,26 @@
+{
+  "friends": [
+    {
+      "name": "Nate",
+      "email": "nate@nate.com",
+      "id": 2
+    },
+    {
+      "name": "Devon",
+      "email": "devon@email.com",
+      "id": 4
+    }
+  ],
+  "bills": [
+    {
+      "resturant": "Dunkins",
+      "numofFriend": "3",
+      "total": "11.80",
+      "split": "$3.93",
+      "id": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

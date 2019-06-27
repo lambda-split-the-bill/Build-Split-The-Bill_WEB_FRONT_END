@@ -6,6 +6,7 @@ import Logout from './components/Login/Logout';
 import Signup from './components/Login/Signup';
 import { Route } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
+import Bills from './components/Calculator/Bills';
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
         <PrivateRoute exact path='/' component={Logout} />
         <PrivateRoute exact path='/' component={Home} />
         <PrivateRoute exact path='/' component={Friends} />
+        <PrivateRoute exact path='/' component={Bills} />
     </div>
 );
 }

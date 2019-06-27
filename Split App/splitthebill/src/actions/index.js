@@ -2,14 +2,20 @@ export {
     ADD_BILL,
     SUCCESS_BILL,
     FAILED_BILL,
-    DELETE_BILL
+    DELETE_BILL,
+    FETCH_BILL,
+    SUCCESS_ADD_BILL,
+    SUCCESS_DELETE_BILL
 } from './bill';
 
 export {
     ADD_FRIEND,
     SUCCESS_FRIEND,
     FAILED_FRIEND,
-    DELETE_FRIEND
+    DELETE_FRIEND,
+    FETCH_FRIEND,
+    SUCCESS_ADD_FRIEND,
+    SUCCESS_DELETE_FRIEND
 } from './friend';
 
 export {

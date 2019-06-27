@@ -1,8 +1,10 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { Route } from 'react-router-dom';
-import Split from '../Calculator/Split';
+import { deleteBill } from '../../actions/bill';
+import { connect } from 'react-redux';
 
+import Split from '../Calculator/Split';
 import '../../App.css'
 
 class Home extends React.Component {
@@ -17,6 +19,7 @@ class Home extends React.Component {
         };
     }
     
+
     handleClose() {
         this.setState({ show: false });
 }
@@ -26,16 +29,16 @@ class Home extends React.Component {
 }
     
     render() {
-        console.log(this.props)
+        console.log(this.props.bill)
     return (
         <div className='Home'>
-            <h1>Welcome {}</h1>
-
+            <h1>Welcome to Split The Bill!</h1>
+            
             <button variant="primary" onClick={this.handleShow}>
                 Add A Bill!
             </button>
         
-        <Modal 
+        <Modal
             className='modal'
             show={this.state.show} 
             onHide={this.handleClose}
@@ -47,15 +50,22 @@ class Home extends React.Component {
         
         <Modal.Body>
         <Route path='/'
-        render={props => <Split {...props} />}
+        render={props => <Split {...props} onHide={this.handleClose}  />}
         />
         </Modal.Body>
         
         </Modal>
 
-            <h2>Recent Activity</h2>
-            <p>You went out to {this.props.resturant} with Mike, James and Brian and spent {this.props.total}!</p>
+        
+
         </div>
 )}}
 
-export default Home;
+const mapStateToProps = () => {
+    return {}
+}
+
+export default connect(
+    mapStateToProps,
+    { deleteBill }
+)(Home);
