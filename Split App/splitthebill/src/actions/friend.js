@@ -13,9 +13,8 @@ export function addFriend(friend) {
     return dispatch => {
         dispatch({ type: ADD_FRIEND })
             axios
-                .post(`http://localhost:3000/friend`, friend)
+                .post(`http://localhost:3000/friends`, friend)
                 .then((res) => {
-                    
                     dispatch({ type: SUCCESS_ADD_FRIEND, payload: res.data })
                 })
                 .catch(err => dispatch({ type: FAILED_FRIEND, payload: err }))
@@ -26,7 +25,7 @@ export function getFriend() {
     return dispatch => {
         dispatch({ type: FETCH_FRIEND });
             axios
-                .get(`http://localhost:3000/friend`)
+                .get(`http://localhost:3000/friends`)
                 .then(res => {
                     dispatch({ type: SUCCESS_FRIEND, payload: res.data });
                 })
@@ -38,7 +37,7 @@ export function deleteFriend(id) {
     return dispatch => {
         dispatch({ type: DELETE_FRIEND });
             axios
-                .delete(`http://localhost:3000/friend/${id}`)
+                .delete(`http://localhost:3000/friends/${id}`)
                 .then(res => {
                     console.log(res.data)
                     dispatch({ type: SUCCESS_DELETE_FRIEND, payload: id});
