@@ -8,7 +8,7 @@ class Bill extends React.Component {
         console.log(this.props.bill)
     return (
         <div className='bill'>
-        <p>You went out to {this.props.bill.resturant} with {this.props.bill.numofFriend} friends, and spent {this.props.bill.total}!</p>
+        <p>You went out to {this.props.bill.resturant} with {this.props.bill.numofFriend} friends, and spent ${this.props.bill.total}!</p>
         <p>Everyone owes {this.props.bill.split}</p>
         
         <button onClick={() => this.props.deleteBill(this.props.bill.id)}>

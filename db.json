@@ -1,23 +1,32 @@
 {
   "friends": [
     {
-      "name": "Nate",
-      "email": "nate@nate.com",
-      "id": 2
-    },
-    {
-      "name": "Devon",
-      "email": "devon@email.com",
-      "id": 4
+      "name": "TestFriend",
+      "email": "testing@email.com",
+      "id": 1
     }
   ],
   "bills": [
     {
-      "resturant": "Dunkins",
-      "numofFriend": "3",
-      "total": "11.80",
-      "split": "$3.93",
+      "resturant": "TestFoodInc",
+      "numofFriend": "4",
+      "total": "120.45",
+      "split": "$30.11",
       "id": 1
+    },
+    {
+      "resturant": "Arbys",
+      "numofFriend": "4",
+      "total": "45",
+      "split": "$11.25",
+      "id": 2
+    },
+    {
+      "resturant": "Food",
+      "numofFriend": "3",
+      "total": "35.89",
+      "split": "11.96",
+      "id": 3
     }
   ],
   "profile": {

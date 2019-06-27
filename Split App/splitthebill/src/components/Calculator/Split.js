@@ -1,6 +1,58 @@
 import React from 'react';
 import { addBill } from '../../actions/bill';
 import { connect } from 'react-redux';
+import styled from 'styled-components'
+
+const SplitInput = styled.input`
+    outline: none;
+    width: 350px;
+    font-size: 28px;
+    margin-right: 10%;
+    background-color: #ffc038;
+    border-style: none;
+    border-bottom: 2px black solid;
+    margin-bottom: 12px;
+`
+
+const SplitButton = styled.button`
+height: 28px;
+width: 350px;
+background-color: #2c3338;
+color: white;
+border-style: none;
+border-radius: 4px;
+    &:hover {
+        background-color: #ffc038;
+        border: 2px black solid;
+        cursor: pointer;
+}     
+`
+
+const AddButton = styled.button`
+    margin-left: 120px;
+    height: 28px;
+    width: 150px;
+    background-color: #2c3338;
+    color: white;
+    border-style: none;
+    border-radius: 4px;
+    &:hover {
+        background-color: #ffc038;
+        border: 2px black solid;
+        cursor: pointer;
+}     
+`
+
+const SplitDiv = styled.div`
+    display: flex;
+    align-items: center;
+    max-width: 350px;
+`
+
+const Splitheader = styled.h2`
+    margin: 0;
+    max-width: 200px;
+`
 
 class Split extends React.Component {
     constructor() {
@@ -20,7 +72,7 @@ class Split extends React.Component {
         this.setState({ 
             bill: {
                 ...this.state.bill,
-                split: '$'+ parseFloat(Math.round((this.state.bill.total / this.state.bill.numofFriend) * 100) / 100).toFixed(2) }}) 
+                split: parseFloat(Math.round((this.state.bill.total / this.state.bill.numofFriend) * 100) / 100).toFixed(2) }}) 
         } else {
             alert('Check Input Again!')
         }
@@ -60,39 +112,39 @@ class Split extends React.Component {
                 <form onSubmit={this.splitBill}>
                     <h2>Add A Bill</h2>
 
-                    <h2>Where did you eat?</h2>
-                    <input
+                    <SplitInput
+                    placeholder='Where did you eat?'
                     type='text'
                     name='resturant'
                     value={this.state.bill.resturant}
                     onChange={this.handleChange} />
                     
-                    <h2>How many friends tagged along?</h2>
-                    <input
+                    <SplitInput
                     step='any'
-                    placeholder='0'
+                    placeholder='How many friends?'
                     name='numofFriend'
                     type='number'
                     value={this.state.bill.numofFriend}
                     onChange={this.handleChange} />
                     
-                    <h2>How much was the total?</h2>
-                    <input
+                    <SplitInput
                     step='any'
-                    placeholder='0.00'
+                    placeholder='Total cost'
                     name='total'
                     type='number'
                     value={this.state.bill.total} 
                     onChange={this.handleChange} />
                     
-                    <button type='submit'>Split!</button>
+                    <SplitButton type='submit'>Split!</SplitButton>
                 </form>
                 
                 <h2>Everyone should pay...</h2>
-                <h2>{this.state.bill.split}</h2>
-                <button onClick={this.handleModal} >
+                <SplitDiv>
+                <Splitheader>${this.state.bill.split}</Splitheader>
+                <AddButton onClick={this.handleModal} >
                         Add
-                </button>
+                </AddButton>
+                </SplitDiv>
 
             </div>
         )

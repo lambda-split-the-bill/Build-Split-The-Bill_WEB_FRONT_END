@@ -5,7 +5,7 @@ import { deleteBill } from '../../actions/bill';
 import { connect } from 'react-redux';
 
 import Split from '../Calculator/Split';
-import '../../App.css'
+import '../../index.css'
 
 class Home extends React.Component {
     constructor(props) {
@@ -32,6 +32,7 @@ class Home extends React.Component {
         console.log(this.props.bill)
     return (
         <div className='Home'>
+            <img src='../../logo.png' alt='logo' />
             <h1>Welcome to Split The Bill!</h1>
             
             <button variant="primary" onClick={this.handleShow}>
@@ -44,8 +45,7 @@ class Home extends React.Component {
             onHide={this.handleClose}
             size="lg"
             centered>
-        <Modal.Header closeButton>
-            <Modal.Title>Split The Bill!</Modal.Title>
+        <Modal.Header className='close' closeButton>
         </Modal.Header>
         
         <Modal.Body>

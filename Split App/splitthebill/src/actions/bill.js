@@ -24,7 +24,7 @@ export function getBill() {
     return dispatch => {
         dispatch({ type: FETCH_BILL });
             axios
-                .get(`http://localhost:3000/bills`)
+                .get(`hhttp://localhost:3000/bills`)
                 .then(res => {
                     dispatch({ type: SUCCESS_BILL, payload: res.data });
                 })
