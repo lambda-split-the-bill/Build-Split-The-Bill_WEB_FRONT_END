@@ -1,4 +1,6 @@
-import axios from 'axios';
+import { axiosWithAuth } from '../authorization/axiosWithAuth';
+
+const path = `https://lambda-split-the-bill-be.herokuapp.com/api/friends`
 
 export const ADD_FRIEND = 'ADD_FRIEND';
 export const SUCCESS_FRIEND = 'SUCCESS_FRIEND';
@@ -12,8 +14,8 @@ export const DELETE_FRIEND = 'DELETE_FRIEND';
 export function addFriend(friend) {
     return dispatch => {
         dispatch({ type: ADD_FRIEND })
-            axios
-                .post(`http://localhost:3000/friends`, friend)
+            axiosWithAuth()
+                .post(path, friend)
                 .then((res) => {
                     dispatch({ type: SUCCESS_ADD_FRIEND, payload: res.data })
                 })
@@ -24,8 +26,8 @@ export function addFriend(friend) {
 export function getFriend() {
     return dispatch => {
         dispatch({ type: FETCH_FRIEND });
-            axios
-                .get(`http://localhost:3000/friends`)
+            axiosWithAuth()
+                .get(path)
                 .then(res => {
                     dispatch({ type: SUCCESS_FRIEND, payload: res.data });
                 })
@@ -36,8 +38,8 @@ export function getFriend() {
 export function deleteFriend(id) {
     return dispatch => {
         dispatch({ type: DELETE_FRIEND });
-            axios
-                .delete(`http://localhost:3000/friends/${id}`)
+            axiosWithAuth()
+                .delete(`https://lambda-split-the-bill-be.herokuapp.com/api/friends/${id}`)
                 .then(res => {
                     console.log(res.data)
                     dispatch({ type: SUCCESS_DELETE_FRIEND, payload: id});

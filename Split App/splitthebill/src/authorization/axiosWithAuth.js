@@ -6,6 +6,6 @@ export const axiosWithAuth = () => {
             headers: {
             Authorization: token
     },
-            baseURL: "https://lambda-split-the-bill-be.herokuapp.com/api/"
+            baseURL: "https://lambda-split-the-bill-be.herokuapp.com/api"
     });
 };
