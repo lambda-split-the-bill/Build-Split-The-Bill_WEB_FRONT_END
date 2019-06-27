@@ -1,30 +1,35 @@
 import React from 'react'
-import { Route } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { addFriend } from '../../actions/friend';
-import Friend from './Friend';
 
 class FriendForm extends React.Component {
-        state = {
-            friend: {
-                name: '',
-                email: ''
-            }
+    constructor(props) {
+        super(props);    
+            this.state = {
+                friend: {
+                    name: '',
+                    email: ''
+                }
     }
+}
 
     handleChange = e => {
         this.setState({
-        ...this.state,
-        [e.target.name]: e.target.value 
-    })
+            friend: {
+                ...this.state.friend,
+                [e.target.name]: e.target.value
+    }});
 };
 
     handleSubmit = e => {
-        e.preventDefault();
-        this.props
-        .addFriend(this.state)
-        .then(res => this.props.history.push('/'));
-    };
+        e.preventDefault()
+        this.props.addFriend(this.state.friend);
+        this.setState({
+            friend:{
+                name: '',
+                email: ''
+    }})      
+};
     
     render() {
         return(
@@ -34,25 +39,24 @@ class FriendForm extends React.Component {
                     placeholder='Add A Friend'
                     type='text'
                     name='name'
-                    value={this.state.name}
+                    value={this.state.friend.name}
                     onChange={this.handleChange} />
+                    
                     <input
                     placeholder='E-Mail'
                     type='text'
                     name='email'
-                    value={this.state.email} 
+                    value={this.state.friend.email} 
                     onChange={this.handleChange} />
                     <button type='submit'><i className="fas fa-user-plus"></i></button>
                 </form>
-                <Route exact path='/'
-                render={props => <Friend {...props} friend={this.friend} />}
-        />
             </div>
         )
     }
 }
 
+
 export default connect(
     null,
-    { addFriend}
+    { addFriend }
 )(FriendForm);

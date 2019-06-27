@@ -9,7 +9,10 @@ export {
     ADD_FRIEND,
     SUCCESS_FRIEND,
     FAILED_FRIEND,
-    DELETE_FRIEND
+    DELETE_FRIEND,
+    FETCH_FRIEND,
+    SUCCESS_ADD_FRIEND,
+    SUCCESS_DELETE_FRIEND
 } from './friend';
 
 export {
