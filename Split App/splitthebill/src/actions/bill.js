@@ -1,6 +1,7 @@
 import { axiosWithAuth } from '../authorization/axiosWithAuth';
 
-const path = `https://lambda-split-the-bill-be.herokuapp.com/api/bills`
+// const path = `https://lambda-split-the-bill-be.herokuapp.com/api/bills`
+const path = `http://localhost:3000/bills`
 
 export const ADD_BILL = 'ADD_BILL';
 export const SUCCESS_BILL = 'SUCCESS_BILL';
@@ -38,7 +39,7 @@ export function deleteBill(id) {
     return dispatch => {
         dispatch({ type: DELETE_BILL });
             axiosWithAuth()
-                .delete(`https://lambda-split-the-bill-be.herokuapp.com/api/bills/${id}`)
+                .delete(`http://localhost:3000/bills/${id}`)
                 .then(res => {
                     console.log(res.data)
                     dispatch({ type: SUCCESS_DELETE_BILL, payload: id});

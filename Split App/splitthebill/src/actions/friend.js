@@ -1,6 +1,7 @@
 import { axiosWithAuth } from '../authorization/axiosWithAuth';
 
-const path = `https://lambda-split-the-bill-be.herokuapp.com/api/friends`
+// const path = `https://lambda-split-the-bill-be.herokuapp.com/api/friends`
+const path = `http://localhost:3000/friends`
 
 export const ADD_FRIEND = 'ADD_FRIEND';
 export const SUCCESS_FRIEND = 'SUCCESS_FRIEND';
@@ -39,7 +40,7 @@ export function deleteFriend(id) {
     return dispatch => {
         dispatch({ type: DELETE_FRIEND });
             axiosWithAuth()
-                .delete(`https://lambda-split-the-bill-be.herokuapp.com/api/friends/${id}`)
+                .delete(`http://localhost:3000/friends/${id}`)
                 .then(res => {
                     console.log(res.data)
                     dispatch({ type: SUCCESS_DELETE_FRIEND, payload: id});
