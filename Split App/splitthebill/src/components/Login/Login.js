@@ -8,7 +8,7 @@ const LoginDiv = styled.div`
     color: white;
     margin-top: 10%;
     border: 2px white solid;
-    height: 350px;
+    height: 100%;
     width: 500px;
     border-radius: 10px;
     margin-left: 36%;
@@ -22,7 +22,7 @@ const LoginForm = styled.form`
 `
 
 const LoginInputUser = styled.input`
-
+    outline: none;
     font-size: 28px;
     margin-left: 10%;
     margin-right: 10%;
@@ -32,6 +32,7 @@ const LoginInputUser = styled.input`
 `
 
 const LoginInputPass = styled.input`
+    outline: none;
     margin-top: 12px;
     margin-left: 10%;
     font-size: 28px;
@@ -43,21 +44,33 @@ const LoginInputPass = styled.input`
 
 const LoginButton = styled.button`
     margin-top: 24px;
+    height: 28px;
     width: 350px;
     margin-left: 15%;
     background-color: #2c3338;
     color: white;
     border-style: none;
     border-radius: 4px;
+        &:hover {
+            background-color: #ffc038;
+            border: 2px black solid;
+            cursor: pointer;
+    }     
 `
 
 const SignupButton = styled.button`
+    height: 28px;
     width: 350px;
     background-color: #2c3338;
+    margin-bottom: 14px;
     color: white;
     border-style: none;
     border-radius: 4px;
-    text-decoration: none;
+        &:hover {
+        background-color: #ffc038;
+        border: 2px black solid;
+        cursor: pointer;
+    }     
 `
 
 const SignupDiv = styled.div`
@@ -90,7 +103,7 @@ class Login extends React.Component {
         e.preventDefault();
         if(this.state.credentials.username.length > 0 && this.state.credentials.password.length > 0) {
         this.props.logIn(this.state.credentials);
-        setTimeout(() => this.loginChecker(), 1000) 
+        setTimeout(() => this.loginChecker(), 2000) 
         } else {
             alert('An input was left blank')
         }
@@ -109,7 +122,8 @@ class Login extends React.Component {
         console.log(this.state);
         return (
             <LoginDiv>
-            <LoginLogo src='../../logo.png' alt='logo' />   
+            <LoginLogo src='../../logo.png' alt='logo' />
+            <h2>LOGIN</h2>  
             <LoginForm onSubmit={this.login}>
             <LoginInputUser
             type="text"
@@ -137,7 +151,7 @@ class Login extends React.Component {
                 <SignupDiv>
                 <h2>Need an Account?</h2>
                 <SignupButton>
-                    <NavLink to="/signup">Sign Up</NavLink>
+                    <NavLink to="/signup" style={{ textDecoration: 'none', color: 'white'}}>Sign Up</NavLink>
                 </SignupButton>
                 </SignupDiv>
         

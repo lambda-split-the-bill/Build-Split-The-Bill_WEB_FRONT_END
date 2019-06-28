@@ -1,23 +1,32 @@
 {
   "friends": [
     {
-      "name": "Nate",
-      "email": "nate@nate.com",
+      "name": "Padme",
+      "email": "email@email.com",
       "id": 2
-    },
-    {
-      "name": "Devon",
-      "email": "devon@email.com",
-      "id": 4
     }
   ],
   "bills": [
     {
-      "resturant": "Dunkins",
+      "resturant": "Food",
       "numofFriend": "3",
-      "total": "11.80",
-      "split": "$3.93",
-      "id": 1
+      "total": "35.89",
+      "split": "11.96",
+      "id": 3
+    },
+    {
+      "resturant": "Applebees",
+      "numofFriend": "4",
+      "total": "62.58",
+      "split": "15.65",
+      "id": 4
+    },
+    {
+      "resturant": "Dennys",
+      "numofFriend": "100",
+      "total": "100",
+      "split": "1.00",
+      "id": 5
     }
   ],
   "profile": {

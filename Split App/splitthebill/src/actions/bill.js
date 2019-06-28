@@ -1,4 +1,7 @@
-import axios from 'axios';
+import { axiosWithAuth } from '../authorization/axiosWithAuth';
+
+// const path = `https://lambda-split-the-bill-be.herokuapp.com/api/bills`
+const path = `http://localhost:3000/bills`
 
 export const ADD_BILL = 'ADD_BILL';
 export const SUCCESS_BILL = 'SUCCESS_BILL';
@@ -11,8 +14,8 @@ export const DELETE_BILL = 'DELETE_BILL';
 export function addBill(bill) {
     return dispatch => {
         dispatch({ type: ADD_BILL })
-            axios
-                .post(`http://localhost:3000/bills`, bill)
+            axiosWithAuth()
+                .post(path, bill)
                 .then((res) => {
                     dispatch({ type: SUCCESS_ADD_BILL, payload: res.data })
                 })
@@ -23,8 +26,8 @@ export function addBill(bill) {
 export function getBill() {
     return dispatch => {
         dispatch({ type: FETCH_BILL });
-            axios
-                .get(`http://localhost:3000/bills`)
+            axiosWithAuth()
+                .get(path)
                 .then(res => {
                     dispatch({ type: SUCCESS_BILL, payload: res.data });
                 })
@@ -35,7 +38,7 @@ export function getBill() {
 export function deleteBill(id) {
     return dispatch => {
         dispatch({ type: DELETE_BILL });
-            axios
+            axiosWithAuth()
                 .delete(`http://localhost:3000/bills/${id}`)
                 .then(res => {
                     console.log(res.data)
