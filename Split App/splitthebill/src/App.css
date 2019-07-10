@@ -1,9 +1,29 @@
+html {
+    background-color: #2c3338;
+    color: white;
+}
 .modal {
-    background-color: white;
-    border: 2px black solid;
+    margin-top: 4%;
+    outline: none;
+    background-color: #ffc038;
+    border-radius: 10px;
+    color: black;
+    border: 2px white solid;
     position: fixed;
-    width: 60%;
+    width: 40%;
     top: 30%;
-    left: 50%;
+    left: 55%;
     transform: translate(-50%, -50%);
+    padding: 10px;
+}
+
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: red;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
 }
